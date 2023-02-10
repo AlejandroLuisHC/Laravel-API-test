@@ -28,11 +28,11 @@ class InvoiceFactory extends Factory
         $status = $this->faker->randomElement(['B', 'P', 'V']);
 
         return [
-           'customer_id' => Customer::factory(),
-           'amount' => $this->faker->randomFloat(100, 20000),
-           'status' => $status,
-           'billed_at' => $this->faker->dateTimeThisDecade(),
-           'paid_at' => $status === 'P' ? $this->faker->dateTimeThisDecade() : null,
+           'customer_id'    => Customer::factory(),
+           'amount'         => $this->faker->randomFloat(100, 20000),
+           'status'         => $status,
+           'billed_at'      => $this->faker->dateTimeThisDecade(),
+           'paid_at'        => $status === 'P' ? $this->faker->dateTimeThisDecade() : null,
         ];
     }
 }

@@ -15,17 +15,17 @@ class CustomerResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'type' => $this->type,
-            'name' => $this->name,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'address' => $this->address,
-            'city' => $this->city,
-            'state' => $this->state,
-            'zip' => $this->zip,
-            'country' => $this->country,
-            'invoices' => InvoiceResource::collection($this->whenLoaded('invoices'))
+            'id'        => $this->id,
+            'name'      => $this->name,
+            'type'      => $this->type,
+            'email'     => $this->email,
+            'phone'     => $this->phone,
+            'address'   => $this->address,
+            'city'      => $this->city,
+            'state'     => $this->state,
+            'zip'       => $this->zip,
+            'country'   => $this->country,
+            'invoices'  => InvoiceResource::collection($this->whenLoaded('invoices'))
         ];
     }
 }

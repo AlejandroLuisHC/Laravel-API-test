@@ -24,19 +24,19 @@ class CustomerFactory extends Factory
      */
     public function definition()
     {
-        $type = $this->faker->randomElement(['Individual', 'Company']);
-        $name = $type === 'Individual' ? $this->faker->name() : $this->faker->company();
+        $type = $this->faker->randomElement(['I', 'C']);
+        $name = $type === 'I' ? $this->faker->name() : $this->faker->company();
 
         return [
-            'name' => $name,
-            'type' => $type,
-            'email' => $this->faker->unique()->safeEmail(),
-            'phone' => $this->faker->phoneNumber(),
-            'address' => $this->faker->address(),
-            'city' => $this->faker->city(),
-            'state' => $this->faker->state(),
-            'country' => $this->faker->country(),
-            'zip' => $this->faker->postcode(),
+            'name'      => $name,
+            'type'      => $type,
+            'email'     => $this->faker->unique()->safeEmail(),
+            'phone'     => $this->faker->phoneNumber(),
+            'address'   => $this->faker->address(),
+            'city'      => $this->faker->city(),
+            'state'     => $this->faker->state(),
+            'country'   => $this->faker->country(),
+            'zip'       => $this->faker->postcode(),
         ];
     }
 }
