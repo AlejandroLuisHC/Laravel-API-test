@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Filters\V1\InvoiceFilter;
 use App\Models\Invoice;
+use App\Filters\V1\InvoiceFilter;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Http\Controllers\Controller;
@@ -21,11 +21,13 @@ class InvoiceController extends Controller
     public function index(Request $request)
     {
         $filter = new InvoiceFilter();
-        $queryItems = $filter->transform($request);
-        if (count($queryItems) === 0) {
+        $filteredItems = $filter->transform($request);
+        if (count($filteredItems) === 0) {
             return new InvoiceCollection(Invoice::paginate());
         } else {
-            return new InvoiceCollection(Invoice::where($queryItems)->paginate());
+            $invoices = Invoice::where($filteredItems)->paginate();
+        
+            return new InvoiceCollection($invoices->appends($request->query()));
         }
     }
 
