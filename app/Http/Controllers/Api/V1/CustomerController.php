@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\CustomerResource;
 use App\Http\Resources\V1\CustomerCollection;
-use App\Services\V1\CustomerQuery;
+use App\Filters\V1\CustomerFilter;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -20,7 +20,7 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = new CustomerQuery();
+        $filter = new CustomerFilter();
         $queryItems = $filter->transform($request);
         if (count($queryItems) === 0) {
             return new CustomerCollection(Customer::paginate());
