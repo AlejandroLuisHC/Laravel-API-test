@@ -36,11 +36,11 @@ class UpdateInvoiceRequest extends FormRequest
             ];
         } else {
             return [
-                'customerId' => ['sometimes', 'required', 'integer'],
-                'amout'      => ['sometimes', 'required', 'numeric'],
-                'status'     => ['sometimes', 'required', Rule::in(['B', 'P', 'V', 'b', 'p', 'v'])],
-                'billedAt'   => ['sometimes', 'required', 'date'],
-                'paidAt'     => ['sometimes', 'required', 'date'],
+                'customerId' => ['sometimes', 'integer'],
+                'amout'      => ['sometimes', 'numeric'],
+                'status'     => ['sometimes', Rule::in(['B', 'P', 'V', 'b', 'p', 'v'])],
+                'billedAt'   => ['sometimes', 'date'],
+                'paidAt'     => ['sometimes', 'date'],
             ];
         }
     }
